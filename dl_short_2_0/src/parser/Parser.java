@@ -71,6 +71,7 @@ public class Parser {
 		case WRITE: return writeStmt();
 		case ID: return assign();
 		case IF: return ifStmt();
+		case WHILE: return whileStmt();
 		default: error("comando inválido");
 		}
 		return null;
@@ -108,6 +109,15 @@ public class Parser {
 		match(Tag.RPAREN);
 		Stmt s1 = stmt();
 		return new If(e, s1);
+	}
+
+	private Stmt whileStmt() {
+		match(Tag.WHILE);
+		match(Tag.LPAREN);
+		Expr e = expr();
+		match(Tag.RPAREN);
+		Stmt s1 = stmt();
+		return new While(e, s1);
 	}
 
 	private Expr expr() {
