@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="22444161-b52b-4ce5-ac4c-b5ae396bdb35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/parser/Parser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/parser/Parser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/parser/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/parser/Parser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prog.dl" beforeDir="false" afterPath="$PROJECT_DIR$/prog.dl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inter/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inter/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inter/expr/Bin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inter/expr/Bin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inter/expr/Or.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inter/expr/Or.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lexer/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexer/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +69,15 @@
       <workItem from="1641844705847" duration="59000" />
       <workItem from="1641845189551" duration="3765000" />
       <workItem from="1642450324494" duration="390000" />
-      <workItem from="1642450831885" duration="1284000" />
+      <workItem from="1642450831885" duration="2149000" />
+      <workItem from="1642454141201" duration="3511000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.dl" />
   </component>
 </project>

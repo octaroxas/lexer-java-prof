@@ -1,10 +1,10 @@
 programa teste inicio
-inteiro a; real b; booleano c;
-  a = 2;
-  b = 3.1415;
-  c = falso;
-  c = a < b;
-  a = (a+2)*c;
-  se (c == verdadeiro)
-    escreva(a);
+  real a;
+  real b;
+  a = 2.5;
+  b = 10.5;
+  real c;
+  c = a+b;
+  se ( c < 10 | c > 20)
+  	escreva(c);
 fim.
