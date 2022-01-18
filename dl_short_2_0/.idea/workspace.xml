@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22444161-b52b-4ce5-ac4c-b5ae396bdb35" name="Changes" comment="" />
+    <list default="true" id="22444161-b52b-4ce5-ac4c-b5ae396bdb35" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/inter/stmt/Write.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/lexer/Lexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lexer/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lexer/Tag.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,6 +63,7 @@
       <workItem from="1641845189551" duration="595000" />
       <workItem from="1642463551667" duration="403000" />
       <workItem from="1642463981198" duration="408000" />
+      <workItem from="1642464741428" duration="94000" />
     </task>
     <servers />
   </component>
