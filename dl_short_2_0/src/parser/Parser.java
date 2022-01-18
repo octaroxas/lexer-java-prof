@@ -7,14 +7,27 @@ import lexer.Lexer;
 import lexer.Tag;
 import lexer.Token;
 
+import java.util.Hashtable;
+
 public class Parser {
 	private Lexer lexer;
 	private Token look;
 	private Node root;
+	private Hashtable<String, Id> table;
 
 	public Parser(Lexer lex) {
 		lexer = lex;
+		table = new Hashtable<String, Id>();
 		move();
+	}
+
+	//metodo que verifica se uma variavel esta na tabela de simbolos
+	private Id findId(Token tokId){
+		Id id = table.get(tokId.lexeme());
+		if (id == null) {
+			error("A variável "+tokId.lexeme()+" nao foi declarada ");
+		}
+		return id;
 	}
 
 	private void error(String s) {
@@ -79,8 +92,16 @@ public class Parser {
 	private Stmt decl() {
 		Token type = move();
 		Token tokId = match(Tag.ID);
-		Id id = new Id(tokId, type.tag());
-		return new Decl(id);
+
+		if(table.get(tokId.lexeme()) == null){
+			Id id = new Id(tokId,type.tag());
+			table.put(tokId.lexeme(), id);
+			return new Decl(id);
+		}
+		error("A variavel "+tokId.lexeme() + " já foi declarada");
+		return null;
+		//Id id = new Id(tokId, type.tag());
+		//return new Decl(id);
 	}
 
 	private Stmt writeStmt() {
@@ -93,12 +114,12 @@ public class Parser {
 	}
 
 	private Stmt assign() {
-		Token tok = match(Tag.ID);
-		Id id = new Id(tok, null);
-		//match(Tag.ID);
+		//Token tok = match(Tag.ID);
+		Id id = findId(match(Tag.ID));
 		match(Tag.ASSIGN);
 		Expr e = expr();
 		return new Assign(id,e);
+		//match(Tag.ID)
 	}
 
 	private Stmt ifStmt() {
@@ -164,8 +185,9 @@ public class Parser {
 				e = new Literal(move(),Tag.BOOL);
 				break;
 		case ID:
-			Token tok = match(Tag.ID);
-			e = new Id(tok, null); break;
+			//Token tok = match(Tag.ID);
+			e = findId(match(Tag.ID));
+			break;
 		default:
 			error("expressão inválida");
 		}
