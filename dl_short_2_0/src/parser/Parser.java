@@ -7,26 +7,14 @@ import lexer.Lexer;
 import lexer.Tag;
 import lexer.Token;
 
-import java.util.Hashtable;
-
 public class Parser {
 	private Lexer lexer;
 	private Token look;
 	private Node root;
-	private Hashtable<String, Id> table;
 
 	public Parser(Lexer lex) {
 		lexer = lex;
-		table = new Hashtable<String, Id>();
 		move();
-	}
-	// Faz a busca de umma variavel na tabela de simbolos
-	private Id findId(Token tokId) {
-		Id id = table.get(tokId.lexeme());
-		if(id == null) {
-			error("A variavel "+tokId.lexeme()+" não foi encontrada!");
-		}
-		return id;
 	}
 
 	private void error(String s) {
@@ -83,7 +71,6 @@ public class Parser {
 		case WRITE: return writeStmt();
 		case ID: return assign();
 		case IF: return ifStmt();
-		case WHILE: return whileStmt();
 		default: error("comando inválido");
 		}
 		return null;
@@ -92,15 +79,8 @@ public class Parser {
 	private Stmt decl() {
 		Token type = move();
 		Token tokId = match(Tag.ID);
-		if(table.get(tokId.lexeme())==null) {
-			Id id = new Id(tokId, type.tag());
-			table.put(tokId.lexeme(),id);
-			return new Decl(id);
-		}
-		error("A variável" + tokId.lexeme() + "já foi declarada!");
-		return null;
-		//Id id = new Id(tokId, type.tag());
-		//return new Decl(id);
+		Id id = new Id(tokId, type.tag());
+		return new Decl(id);
 	}
 
 	private Stmt writeStmt() {
@@ -114,8 +94,7 @@ public class Parser {
 
 	private Stmt assign() {
 		Token tok = match(Tag.ID);
-		Id id = findId(match(Tag.ID));
-		//Id id = new Id(tok, null);
+		Id id = new Id(tok, null);
 		//match(Tag.ID);
 		match(Tag.ASSIGN);
 		Expr e = expr();
@@ -129,15 +108,6 @@ public class Parser {
 		match(Tag.RPAREN);
 		Stmt s1 = stmt();
 		return new If(e, s1);
-	}
-
-	private Stmt whileStmt() {
-		match(Tag.WHILE);
-		match(Tag.LPAREN);
-		Expr e = expr();
-		match(Tag.RPAREN);
-		Stmt s1 = stmt();
-		return new While(e, s1);
 	}
 
 	private Expr expr() {
@@ -195,9 +165,7 @@ public class Parser {
 				break;
 		case ID:
 			Token tok = match(Tag.ID);
-			e = findId(match(Tag.ID));
-			break;
-			//e = new Id(tok, null); break;
+			e = new Id(tok, null); break;
 		default:
 			error("expressão inválida");
 		}

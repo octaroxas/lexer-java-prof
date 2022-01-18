@@ -4,7 +4,7 @@ public enum Tag {
 	//Reserved Words
 	PROGRAM("PROGRAM"), BEGIN("BEGIN"), END("END"),
 	INT("INT"), REAL("REAL"), BOOL("BOOL"),
-	WRITE("WRITE"), IF("IF"), WHILE("WHILE"),
+	WRITE("WRITE"), IF("IF"),
 	//Assign
 	ASSIGN("ASSIGN"),
 	//Arithmetical Operators
@@ -20,27 +20,7 @@ public enum Tag {
 	TRUE("TRUE"), FALSE("FALSE"),
 	//Others
 	EOF("EOF"), UNK("UNK"), TEMP("TEMP");
-
-	public boolean isInt() {
-		return this == Tag.INT;
-	}
-
-	public boolean isReal() {
-		return this == Tag.REAL;
-	}
-
-	public boolean isBool() {
-		return this == Tag.BOOL;
-	}
-
-	public boolean isNum() {
-		return (isInt() || isReal());
-	}
-
-	public boolean isType() {
-		return isNum() || isBool();
-	}
-
+	
 	private String name;
 	
 	private Tag(String name) {
