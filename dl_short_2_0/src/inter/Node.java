@@ -1,5 +1,7 @@
 package inter;
 
+import lexer.Lexer;
+
 import java.util.LinkedList;
 
 public abstract class Node {
@@ -25,5 +27,10 @@ public abstract class Node {
             sb.append(n.strTree(ident+"        "));
         }
         return sb.toString();
+    }
+
+    public static void error(String s){
+        System.err.println("(Erro em Node.java)linha "+ Lexer.line() + ": "+ s);
+        System.exit(0);
     }
 }

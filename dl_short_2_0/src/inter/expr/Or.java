@@ -9,6 +9,12 @@ public class Or extends Expr {
 
     public Or(Expr e1, Expr e2){
         super(new Token(Tag.OR, "|"),Tag.BOOL);
+
+        if(!e1.type().isBool() ||
+        !e2.type().isBool()){
+            error("O Operador lógico | só pode ser aplicado entre tipos booleanos!!");
+        }
+
         expr1 = e1;
         expr2 = e2;
         addChild(expr1);
